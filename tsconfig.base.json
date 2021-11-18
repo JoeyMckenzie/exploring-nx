@@ -14,7 +14,22 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@exploring-nx/shared/configuration": [
+        "libs/shared/configuration/src/index.ts"
+      ],
+      "@exploring-nx/shared/features/todos": [
+        "libs/shared/features/todos/src/index.ts"
+      ],
+      "@exploring-nx/shared/features/users": [
+        "libs/shared/features/users/src/index.ts"
+      ],
+      "@exploring-nx/shared/services": ["libs/shared/services/src/index.ts"],
+      "@exploring-nx/shared/ui/components": [
+        "libs/shared/ui/components/src/index.ts"
+      ],
+      "@exploring-nx/shared/ui/pages": ["libs/shared/ui/pages/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

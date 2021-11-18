@@ -1,7 +1,7 @@
 {
   "npmScope": "exploring-nx",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "main"
   },
   "implicitDependencies": {
     "package.json": {
@@ -19,11 +19,43 @@
     }
   },
   "projects": {
-    "todos": {
+    "awesome-app": {
+      "tags": ["scope:awesome-app", "type:app"]
+    },
+    "awesome-app-admin": {
+      "tags": ["scope:awesome-app-admin", "type:app"]
+    },
+    "awesome-app-admin-e2e": {
+      "tags": ["scope:awesome-app-admin-e2e", "type:app"],
+      "implicitDependencies": ["awesome-app-admin"]
+    },
+    "awesome-app-e2e": {
+      "tags": ["scope:awesome-app-e2e", "type:app"],
+      "implicitDependencies": ["awesome-app"]
+    },
+    "shared-configuration": {
+      "tags": ["scope:shared-configuration", "type:lib"]
+    },
+    "shared-features-todos": {
+      "tags": ["scope:shared-features-todos", "type:lib"]
+    },
+    "shared-features-users": {
+      "tags": ["scope:shared-features-users", "type:lib"]
+    },
+    "shared-services": {
       "tags": []
     },
+    "shared-ui-components": {
+      "tags": []
+    },
+    "shared-ui-pages": {
+      "tags": []
+    },
+    "todos": {
+      "tags": ["scope:todos", "type:app"]
+    },
     "todos-e2e": {
-      "tags": [],
+      "tags": ["scope:todos-e2e", "type:app"],
       "implicitDependencies": ["todos"]
     }
   }

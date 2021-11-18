@@ -1,6 +1,392 @@
 {
   "version": 1,
   "projects": {
+    "awesome-app": {
+      "projectType": "application",
+      "root": "apps/awesome-app",
+      "sourceRoot": "apps/awesome-app/src",
+      "prefix": "exploring-nx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/awesome-app",
+            "index": "apps/awesome-app/src/index.html",
+            "main": "apps/awesome-app/src/main.ts",
+            "polyfills": "apps/awesome-app/src/polyfills.ts",
+            "tsConfig": "apps/awesome-app/tsconfig.app.json",
+            "assets": [
+              "apps/awesome-app/src/favicon.ico",
+              "apps/awesome-app/src/assets"
+            ],
+            "styles": ["apps/awesome-app/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/awesome-app/src/environments/environment.ts",
+                  "with": "apps/awesome-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "awesome-app:build:production"
+            },
+            "development": {
+              "browserTarget": "awesome-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "awesome-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/awesome-app/src/**/*.ts",
+              "apps/awesome-app/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/awesome-app"],
+          "options": {
+            "jestConfig": "apps/awesome-app/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "awesome-app-admin": {
+      "projectType": "application",
+      "root": "apps/awesome-app-admin",
+      "sourceRoot": "apps/awesome-app-admin/src",
+      "prefix": "exploring-nx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/awesome-app-admin",
+            "index": "apps/awesome-app-admin/src/index.html",
+            "main": "apps/awesome-app-admin/src/main.ts",
+            "polyfills": "apps/awesome-app-admin/src/polyfills.ts",
+            "tsConfig": "apps/awesome-app-admin/tsconfig.app.json",
+            "assets": [
+              "apps/awesome-app-admin/src/favicon.ico",
+              "apps/awesome-app-admin/src/assets"
+            ],
+            "styles": ["apps/awesome-app-admin/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/awesome-app-admin/src/environments/environment.ts",
+                  "with": "apps/awesome-app-admin/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "awesome-app-admin:build:production"
+            },
+            "development": {
+              "browserTarget": "awesome-app-admin:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "awesome-app-admin:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/awesome-app-admin/src/**/*.ts",
+              "apps/awesome-app-admin/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/awesome-app-admin"],
+          "options": {
+            "jestConfig": "apps/awesome-app-admin/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "awesome-app-admin-e2e": {
+      "root": "apps/awesome-app-admin-e2e",
+      "sourceRoot": "apps/awesome-app-admin-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/awesome-app-admin-e2e/cypress.json",
+            "tsConfig": "apps/awesome-app-admin-e2e/tsconfig.e2e.json",
+            "devServerTarget": "awesome-app-admin:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "awesome-app-admin:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/awesome-app-admin-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "awesome-app-e2e": {
+      "root": "apps/awesome-app-e2e",
+      "sourceRoot": "apps/awesome-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/awesome-app-e2e/cypress.json",
+            "tsConfig": "apps/awesome-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "awesome-app:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "awesome-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/awesome-app-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "shared-configuration": {
+      "projectType": "library",
+      "root": "libs/shared/configuration",
+      "sourceRoot": "libs/shared/configuration/src",
+      "prefix": "exploring-nx",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/configuration"],
+          "options": {
+            "jestConfig": "libs/shared/configuration/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/configuration/src/**/*.ts",
+              "libs/shared/configuration/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "shared-features-todos": {
+      "projectType": "library",
+      "root": "libs/shared/features/todos",
+      "sourceRoot": "libs/shared/features/todos/src",
+      "prefix": "exploring-nx",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/features/todos"],
+          "options": {
+            "jestConfig": "libs/shared/features/todos/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/features/todos/src/**/*.ts",
+              "libs/shared/features/todos/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "shared-features-users": {
+      "projectType": "library",
+      "root": "libs/shared/features/users",
+      "sourceRoot": "libs/shared/features/users/src",
+      "prefix": "exploring-nx",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/features/users"],
+          "options": {
+            "jestConfig": "libs/shared/features/users/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/features/users/src/**/*.ts",
+              "libs/shared/features/users/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "shared-services": {
+      "projectType": "library",
+      "root": "libs/shared/services",
+      "sourceRoot": "libs/shared/services/src",
+      "prefix": "exploring-nx",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/services"],
+          "options": {
+            "jestConfig": "libs/shared/services/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/services/src/**/*.ts",
+              "libs/shared/services/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "shared-ui-components": {
+      "projectType": "library",
+      "root": "libs/shared/ui/components",
+      "sourceRoot": "libs/shared/ui/components/src",
+      "prefix": "exploring-nx",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/ui/components"],
+          "options": {
+            "jestConfig": "libs/shared/ui/components/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/ui/components/src/**/*.ts",
+              "libs/shared/ui/components/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "shared-ui-pages": {
+      "projectType": "library",
+      "root": "libs/shared/ui/pages",
+      "sourceRoot": "libs/shared/ui/pages/src",
+      "prefix": "exploring-nx",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/ui/pages"],
+          "options": {
+            "jestConfig": "libs/shared/ui/pages/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/ui/pages/src/**/*.ts",
+              "libs/shared/ui/pages/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "todos": {
       "projectType": "application",
       "root": "apps/todos",
