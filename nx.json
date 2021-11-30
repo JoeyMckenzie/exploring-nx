@@ -33,14 +33,17 @@
       "tags": ["scope:awesome-app-e2e", "type:app"],
       "implicitDependencies": ["awesome-app"]
     },
-    "shared-configuration": {
-      "tags": ["scope:shared-configuration", "type:lib"]
+    "shared-features-settings": {
+      "tags": []
     },
     "shared-features-todos": {
       "tags": ["scope:shared-features-todos", "type:lib"]
     },
     "shared-features-users": {
       "tags": ["scope:shared-features-users", "type:lib"]
+    },
+    "shared-models": {
+      "tags": []
     },
     "shared-services": {
       "tags": []

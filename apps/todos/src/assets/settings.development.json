@@ -1,0 +1,4 @@
+{
+  "environment": "development",
+  "baseUrl": "https://jsonplaceholder.typicode.com/todos"
+}

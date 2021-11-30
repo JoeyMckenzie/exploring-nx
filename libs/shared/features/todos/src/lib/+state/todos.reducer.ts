@@ -1,16 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
+import { Todo } from '../models';
 import * as TodosActions from './todos.actions';
 
 export const TODOS_FEATURE_KEY = 'todos';
 
 type LoadingState = 'idle' | 'loading' | 'error';
-
-export interface Todo {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
 
 export interface TodosState {
   todos: Todo[];

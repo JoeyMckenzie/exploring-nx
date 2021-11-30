@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {
-  CONFIGURATION,
-  SharedConfigurationModule,
-} from '@exploring-nx/shared/configuration';
-import { SharedFeaturesTodosModule } from '@exploring-nx/shared/features/todos';
+import { ENVIRONMENT } from '@exploring-nx/shared/features/settings';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -15,13 +14,16 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedConfigurationModule,
-    SharedFeaturesTodosModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+    }),
   ],
   bootstrap: [AppComponent],
   providers: [
     {
-      provide: CONFIGURATION,
+      provide: ENVIRONMENT,
       useValue: environment,
     },
   ],

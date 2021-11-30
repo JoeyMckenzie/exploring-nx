@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Todo } from '@exploring-nx/shared/models';
 
 @Component({
-  selector: 'exploring-nx-todos-list-item',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: '[exploring-nx-todos-list-item]',
   templateUrl: './todos-list-item.component.html',
-  styleUrls: ['./todos-list-item.component.css']
 })
-export class TodosListItemComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class TodosListItemComponent {
+  @Input() todo?: Todo;
 }

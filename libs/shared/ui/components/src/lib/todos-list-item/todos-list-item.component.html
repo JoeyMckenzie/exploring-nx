@@ -1,1 +1,12 @@
-<p>todos-list-item works!</p>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+  {{ todo?.id }}
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+  {{ todo?.title }}
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+  {{ todo?.userId }}
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+  <input type="checkbox" [defaultChecked]="todo?.completed" class="h-4 w-4 text-indigo-600 rounded">
+</td>

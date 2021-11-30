@@ -5,9 +5,7 @@ import { TodosListItemComponent } from './todos-list-item/todos-list-item.compon
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [
-    TodosListComponent,
-    TodosListItemComponent
-  ],
+  declarations: [TodosListComponent, TodosListItemComponent],
+  exports: [TodosListComponent, TodosListItemComponent],
 })
 export class SharedUiComponentsModule {}

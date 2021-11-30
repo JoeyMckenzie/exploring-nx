@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SettingsFacade } from '@exploring-nx/shared/features/settings';
 import { TodosFacade } from '@exploring-nx/shared/features/todos';
-import { UnsubscribeService } from '@exploring-nx/shared/services';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'exploring-nx-todos',
@@ -13,12 +12,11 @@ export class TodosComponent implements OnInit {
 
   constructor(
     private todosFacade: TodosFacade,
-    private unsubscribe$: UnsubscribeService
+    private settingsFacade: SettingsFacade
   ) {}
 
-  ngOnInit(): void {
-    this.todos$.pipe(takeUntil(this.unsubscribe$));
-    this.loading$.pipe(takeUntil(this.unsubscribe$));
+  ngOnInit() {
+    this.settingsFacade.loadSettings();
   }
 
   onLoadClicked() {

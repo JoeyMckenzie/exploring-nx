@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SharedFeaturesTodosModule } from '@exploring-nx/shared/features/todos';
-import { SharedServicesModule } from '@exploring-nx/shared/services';
+import { SharedUiComponentsModule } from '@exploring-nx/shared/ui/components';
+import { SharedFeaturesSettingsModule } from '@exploring-nx/shared/features/settings';
 
 import { TodosComponent } from './todos/todos.component';
 
@@ -10,7 +11,8 @@ import { TodosComponent } from './todos/todos.component';
   imports: [
     CommonModule,
     SharedFeaturesTodosModule,
-    SharedServicesModule,
+    SharedFeaturesSettingsModule,
+    SharedUiComponentsModule,
     RouterModule.forChild([
       {
         path: '',

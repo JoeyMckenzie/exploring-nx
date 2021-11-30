@@ -237,17 +237,17 @@
         }
       }
     },
-    "shared-configuration": {
+    "shared-features-settings": {
       "projectType": "library",
-      "root": "libs/shared/configuration",
-      "sourceRoot": "libs/shared/configuration/src",
+      "root": "libs/shared/features/settings",
+      "sourceRoot": "libs/shared/features/settings/src",
       "prefix": "exploring-nx",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/configuration"],
+          "outputs": ["coverage/libs/shared/features/settings"],
           "options": {
-            "jestConfig": "libs/shared/configuration/jest.config.js",
+            "jestConfig": "libs/shared/features/settings/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -255,8 +255,8 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/shared/configuration/src/**/*.ts",
-              "libs/shared/configuration/src/**/*.html"
+              "libs/shared/features/settings/src/**/*.ts",
+              "libs/shared/features/settings/src/**/*.html"
             ]
           }
         }
@@ -308,6 +308,27 @@
               "libs/shared/features/users/src/**/*.ts",
               "libs/shared/features/users/src/**/*.html"
             ]
+          }
+        }
+      }
+    },
+    "shared-models": {
+      "root": "libs/shared/models",
+      "sourceRoot": "libs/shared/models/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/models/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/models"],
+          "options": {
+            "jestConfig": "libs/shared/models/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
