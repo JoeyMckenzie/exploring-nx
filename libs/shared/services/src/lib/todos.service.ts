@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { Todo } from '@exploring-nx/shared/models';
 
+const BASE_API_URL = 
+
 const MAX_RANDOM_DELAY = 2000;
 
 function withRandomDelay<T>() {
